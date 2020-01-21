@@ -8,7 +8,7 @@ export const getGames = async () => {
     return {
       id: game.id,
       name: game.name,
-      gender: game.genres.map(genre => genre.name),
+      genders: game.genres.map(genre => genre.name),
       released: game.released,
       rating: game.rating,
       screenshot: game.short_screenshot

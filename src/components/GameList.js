@@ -24,7 +24,7 @@ class GameList extends React.Component {
         {this.state.loading && <div>Loading...</div>}
         {this.state.games.map(game => (
           <li key={game.id}>
-            <Game name={game.name} />
+            <Game game={game} />
           </li>
         ))}
       </div>
