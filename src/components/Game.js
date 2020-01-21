@@ -1,10 +1,12 @@
 import React from "react";
 import Card from "react-bootstrap/Card";
+import Button from "react-bootstrap/Button";
 
 class Game extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      id: props.game.id,
       name: props.game.name,
       genders: props.game.genders,
       released: props.game.released,
@@ -12,6 +14,10 @@ class Game extends React.Component {
       screenshot: props.game.screenshot
     };
   }
+
+  removeGame = () => {
+    this.props.removeGame(this.state.id);
+  };
 
   render() {
     return (
@@ -25,6 +31,7 @@ class Game extends React.Component {
           <Card.Text>
             {this.state.released} - Rating : {this.state.rating}
           </Card.Text>
+          <Button onClick={this.removeGame}>Delete</Button>
         </Card.Body>
       </Card>
     );

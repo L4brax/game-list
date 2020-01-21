@@ -13,12 +13,18 @@ class GameList extends React.Component {
     };
   }
 
-  componentDidMount() {
+  componentDidMount = () => {
     getGames().then(games => {
       this.setState({ games });
       this.setState({ loading: false });
     });
-  }
+  };
+
+  removeGame = id => {
+    this.setState(prevState => ({
+      games: prevState.games.filter(game => game.id !== id)
+    }));
+  };
 
   render() {
     return (
@@ -30,7 +36,7 @@ class GameList extends React.Component {
         )}
         <CardColumns>
           {this.state.games.map(game => (
-            <Game game={game} key={game.id} />
+            <Game game={game} key={game.id} removeGame={this.removeGame} />
           ))}
         </CardColumns>
       </div>
