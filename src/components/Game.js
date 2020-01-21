@@ -1,4 +1,5 @@
 import React from "react";
+import Card from "react-bootstrap/Card";
 
 class Game extends React.Component {
   constructor(props) {
@@ -14,9 +15,18 @@ class Game extends React.Component {
 
   render() {
     return (
-      <div>
-        {this.state.name} - {this.state.genders.toString()}
-      </div>
+      <Card style={{ marginBottom: "10px" }}>
+        <Card.Img variant="top" src={this.state.screenshot} />
+        <Card.Body>
+          <Card.Title>{this.state.name}</Card.Title>
+          <Card.Subtitle className="mb-2 text-muted">
+            {this.state.genders.toString().replace(",", " ")}
+          </Card.Subtitle>
+          <Card.Text>
+            {this.state.released} - Rating : {this.state.rating}
+          </Card.Text>
+        </Card.Body>
+      </Card>
     );
   }
 }

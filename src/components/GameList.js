@@ -1,6 +1,8 @@
 import React from "react";
 import Game from "./Game";
 import { getGames } from "./../services/games";
+import CardColumns from "react-bootstrap/CardColumns";
+import Spinner from "react-bootstrap/Spinner";
 
 class GameList extends React.Component {
   constructor(props) {
@@ -21,12 +23,16 @@ class GameList extends React.Component {
   render() {
     return (
       <div>
-        {this.state.loading && <div>Loading...</div>}
-        {this.state.games.map(game => (
-          <li key={game.id}>
-            <Game game={game} />
-          </li>
-        ))}
+        {this.state.loading && (
+          <Spinner animation="border" role="status">
+            <span className="sr-only">Loading...</span>
+          </Spinner>
+        )}
+        <CardColumns>
+          {this.state.games.map(game => (
+            <Game game={game} key={game.id} />
+          ))}
+        </CardColumns>
       </div>
     );
   }

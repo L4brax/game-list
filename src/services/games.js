@@ -11,7 +11,7 @@ export const getGames = async () => {
       genders: game.genres.map(genre => genre.name),
       released: game.released,
       rating: game.rating,
-      screenshot: game.short_screenshot
+      screenshot: game.short_screenshots[0].image
     };
   });
 };
