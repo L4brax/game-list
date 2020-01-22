@@ -16,6 +16,10 @@ class Game extends React.Component {
   }
 
   removeGame = () => {
+    /**
+     * This method will call the method sended in the props to lift up the data to parent component.
+     * Which remove the Game from the parent state.
+     */
     this.props.removeGame(this.state.id);
   };
 

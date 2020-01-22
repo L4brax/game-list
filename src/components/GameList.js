@@ -13,6 +13,7 @@ class GameList extends React.Component {
     };
   }
 
+  /** Method called here wil execute only after render, avoiding endless loop. */
   componentDidMount = () => {
     getGames().then(games => {
       this.setState({ games });
@@ -20,6 +21,7 @@ class GameList extends React.Component {
     });
   };
 
+  /** This will remove a selected game from the state by its id */
   removeGame = id => {
     this.setState(prevState => ({
       games: prevState.games.filter(game => game.id !== id)
